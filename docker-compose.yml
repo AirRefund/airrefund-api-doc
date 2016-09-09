@@ -1,0 +1,13 @@
+version: '2'
+services:
+  reverse_proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock"
+  api_doc:
+    image: airrefund/airrefund-api-doc
+    depends_on:
+      - reverse_proxy
+
